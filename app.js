@@ -5,6 +5,9 @@ const mongoose = require('mongoose')
 const app = express()
 const PORT = process.env.PORT || 5000
 
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+
 mongoose.connect('mongodb://user:password@ds117148.mlab.com:17148/bluehacks')
 
 const Employer = mongoose.model('Employer', {
@@ -40,7 +43,22 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => res.send('ashd'))
+app.get('/', function(req, res) {
+    res.render('search');
+});
+
+app.get('/signup', function(req, res) {
+    res.render('signup');
+});
+
+app.get('/verify', function(req, res) {
+    res.render('verify');
+});
+
+app.post('/signup', function(req, res) {
+    res.send(req.body);
+});
+
 app.post('/', (req, res) => {
     console.log(req.body.inboundSMSMessageList.inboundSMSMessage)
     res.send(req.body)

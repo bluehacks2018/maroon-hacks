@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/semantic.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="ui middle aligned center aligned stackable grid fullpage">
+    <div class="three column row">
+      <div class="column"></div>
+      <div class="column">
+          <h1 class="ui secondary header">
+              <div class="kwelyo title">
+                KWELYO
+              </div>
+          </h1>
+          <div class="ui huge segment">
+            <form class="ui form" action='/signup' method='post'>
+              <h2 class="ui header">Register</h2>
+              <div class="field">
+                <label>Name</label>
+                <div class="three fields">
+                    <div class="seven wide field">
+                        <input type="text" name="first_name" placeholder="First Name">
+                    </div>
+                    <div class="two wide field">
+                        <input type="text" name="middle_initial" placeholder="M.I.">
+                    </div>
+                    <div class="seven wide field">
+                        <input type="text" name="last_name" placeholder="Last Name">
+                    </div>
+                </div>
+              </div>
+              <div class="field">
+                  <label>Contact Number</label>
+                    <input type="text" name="contact_number" placeholder="+639XX XXX XXXX">
+              </div>
+              <div class="field">
+                  <label>PIN</label>
+                    <input type="text" name="pin" placeholder="XXXX">
+              </div>
+              <input type='submit' value='Register' class="ui primary button" style='margin-top: 10px;'>
+            </form>
+          </input>
+          </div>
+      </div>
+      <div class="column"></div>
+    </div>
+  </div>
+</body>
+</html>
+

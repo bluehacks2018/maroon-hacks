@@ -1,0 +1,39 @@
+.fullpage {
+    height: 100vh;
+}
+
+.primary.button {
+    background-color: #3062A6 !important;
+}
+
+.primary.header {
+    color: #0068B3;
+}
+
+.secondary.header {
+    color: #ffffff;
+}
+
+.kwelyo.title {
+    color: #ffffff;
+    font-size: 40px !important;
+    letter-spacing: 2px;
+}
+
+body {
+    background-color: #3062A6;
+}
+
+.hide {
+    display: none;
+}
+
+a.card {
+    color: #333;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+a.card .image {
+    margin-bottom: 10px;
+}
