@@ -19,6 +19,7 @@
   "homepage": "https://github.com/bluehacks2018/maroon-hacks#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongoose": "^5.0.1"
   }
 }
