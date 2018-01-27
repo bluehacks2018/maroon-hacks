@@ -110,6 +110,7 @@ app.post('/', (req, res) => {
             lastName: msg[3],
             contactNumber: '0' + number.substring(number.length - 10),
             pin: msg[4],
+            streetAddress: '',
             verified: false
         })
 
