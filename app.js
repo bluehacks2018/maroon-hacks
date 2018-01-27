@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('ashd'))
 app.post('/', (req, res) => {
-    console.log(req)
+    console.log(req.body.inboundSMSMessageList.inboundSMSMessage)
     res.send(req.body)
 })
 
