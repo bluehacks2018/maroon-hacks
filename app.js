@@ -19,9 +19,19 @@ const Employer = mongoose.model('Employer', {
     pin: String,
     streetAddress: String,
     city: String,
-    region: String,
     verified: Boolean
 })
+
+// Jobs:
+//     Karpintero
+//     Elektrisista
+//     Kasambahay
+//     Taga-alaga
+//     Tsuper
+//     Kusinero
+//     Masonero
+//     Mekaniko
+//     Tubero
 
 const Worker = mongoose.model('Worker', {
     firstName: String,
@@ -32,7 +42,6 @@ const Worker = mongoose.model('Worker', {
     pin: String,
     streetAddress: String,
     city: String,
-    region: String,
     job: String,
     verified: Boolean
 })
