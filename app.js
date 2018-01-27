@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const app = express()
+const PORT = process.env.PORT || 5000
 
 mongoose.connect('mongodb://user:password@ds117148.mlab.com:17148/bluehacks')
 
@@ -26,7 +27,7 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res) => res.send('ashd'))
 app.post('/', (req, res) => {
-    console.log(req.body.msg)
+    console.log(req.body.inboundSMSMessageList.inboundSMSMessage)
     res.send(req.body)
 })
 
@@ -49,4 +50,4 @@ app.post('/employers', (req, res) => {
     }))
 })
 
-app.listen(3001, () => console.log('Example app listening on port 3001!'))
+app.listen(PORT, () => console.log('Example app listening on port ' + PORT + '!'))
