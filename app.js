@@ -129,7 +129,7 @@ app.post('/', (req, res) => {
 
         employer.save().then(() => {
             message_to_send = 'Natanggap na namin ang iyong mga detalye, ' + firstName +'. Pumunta sa pinakamalapit na booth upang magpa-verify. Magdala ng balidong ID para dito. Salamat!';
-            send_message(message_to_send, worker.contactNumber);
+            send_message(message_to_send, employer.contactNumber);
             res.send({
                 "msg": "Employer successfully registered.",
                 "success": true
