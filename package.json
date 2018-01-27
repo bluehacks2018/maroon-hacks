@@ -1,0 +1,24 @@
+{
+  "name": "sms",
+  "version": "1.0.0",
+  "description": "Blue Hacks 2018 Submission for Team \"Maroon Hacks\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluehacks2018/maroon-hacks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluehacks2018/maroon-hacks/issues"
+  },
+  "homepage": "https://github.com/bluehacks2018/maroon-hacks#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  }
+}
