@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kwelyo</title>
+    <link rel="stylesheet" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+        <div class="ui middle aligned center aligned stackable grid fullpage">
+                <div class="three column row">
+                  <div class="column"></div>
+                  <div class="column">
+                      <h1 class="ui secondary header">
+                          <div class="kwelyo title">
+                            KWELYO
+                          </div>
+                      </h1>
+                      <div class="ui huge segment">
+                        <h2 class="ui header">Pagkakapatunay 
+                            <div class="sub header">
+                                (Verification)
+                            </div>
+                        </h2>
+                        <form class="ui form">
+                            <label>Kumuha ng litrato habang hawak ang isang balidong ID. <br>(Please upload a photo of you holding up a valid ID.)</label>
+                            <div class="ui basic segment center aligned">
+                                <video id="video" width="320" height="240" autoplay></video>
+                                <canvas id="canvas" class='hide' width="320" height="240"></canvas><br>
+                                <button class='ui primary button' id="snap" style='margin-top: 10px;'>Kumuha ng litrato <br> <span style='font-size: 12px;'>(Take a picture)</span></button>
+                            </div>
+                            <div class="field">
+                                <input type="text" name="street_address" placeholder="Street Address">
+                            </div>
+                            <div class="field">
+                                <input type="text" name="city" placeholder="City">
+                            </div>
+                            <div class="field">
+                                <input type="text" name="region" placeholder="Region">
+                            </div>
+                            <input type="submit" value="Confirm (Pagtibayin)" class='ui primary button'>
+                        </form>
+                    </div>
+                  </div>
+                  <div class="column"></div>
+                </div>
+              </div>
+<script src="/js/jquery.min.js"></script>
+<script>
+    // Grab elements, create settings, etc.
+var video = document.getElementById('video');
+
+// Get access to the camera!
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        video.play();
+    });
+}
+
+// Elements for taking the snapshot
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+var video = document.getElementById('video');
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function() {
+    context.drawImage(video, 0, 0, 320, 240);
+    $('#video').addClass('hide');
+    $('#canvas').removeClass('hide');
+});
+</script>
+</body>
+</html>
+
