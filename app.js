@@ -46,6 +46,16 @@ const Worker = mongoose.model('Worker', {
     verified: Boolean
 })
 
+const Monty = {
+    access_token: '25tr84FFxaPiMue5ySsfTB9-C52VYxyWtJ4Ek0Q5HJs',
+    subscriber_number: '9064612583'
+}
+
+const Berna = {
+    access_token: 'gluU4ok_ruydxWSmQzPWvCaZLHIRv0rXVTm-3GCk2eY',
+    subscriber_number: '9178837455'
+}
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
