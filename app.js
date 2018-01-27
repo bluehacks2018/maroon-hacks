@@ -105,6 +105,7 @@ app.post('/', (req, res) => {
             verified: false
         })
 
+<<<<<<< HEAD
         worker.save().then(() => {
             send_message('Testing', worker.contactNumber);
             res.send({
@@ -112,6 +113,12 @@ app.post('/', (req, res) => {
                 "success": true
             });
         }).catch(() => res.send({
+=======
+        worker.save().then(() => res.send({
+            "msg": "Worker successfully registered.",
+            "success": true
+        })).catch(() => res.send({
+>>>>>>> 857c03ce87f34afd519082237c877c28fab53283
             "msg": "That number is already registered.",
             "success": false
         }))
@@ -122,6 +129,7 @@ app.post('/', (req, res) => {
             lastName: msg[3],
             contactNumber: '0' + number.substring(number.length - 10),
             pin: msg[4],
+            streetAddress: '',
             verified: false
         })
 
