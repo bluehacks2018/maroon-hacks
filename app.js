@@ -16,7 +16,8 @@ const Employer = mongoose.model('Employer', {
     password: String,
     streetAddress: String,
     city: String,
-    region: String
+    region: String,
+    verified: Boolean
 })
 
 const Worker = mongoose.model('Worker', {
@@ -28,7 +29,8 @@ const Worker = mongoose.model('Worker', {
     password: String,
     streetAddress: String,
     city: String,
-    region: String
+    region: String,
+    verified: Boolean
 })
 
 // parse application/x-www-form-urlencoded
@@ -53,7 +55,8 @@ app.post('/employers', (req, res) => {
         password: req.body.password,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
-        region: req.body.region
+        region: req.body.region,
+        verified: false
     })
 
     employer.save().then(() => res.send({
@@ -72,7 +75,8 @@ app.post('/workers', (req, res) => {
         password: req.body.password,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
-        region: req.body.region
+        region: req.body.region,
+        verified: false
     })
 
     worker.save().then(() => res.send({
