@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const express = require('express')
 const mongoose = require('mongoose')
+const request = require('request');
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -46,14 +47,22 @@ const Worker = mongoose.model('Worker', {
     verified: Boolean
 })
 
-const Monty = {
-    access_token: '25tr84FFxaPiMue5ySsfTB9-C52VYxyWtJ4Ek0Q5HJs',
-    subscriber_number: '9064612583'
+const access_tokens = {
+    '09064612583': '25tr84FFxaPiMue5ySsfTB9-C52VYxyWtJ4Ek0Q5HJs',
+    '09178837455': 'gluU4ok_ruydxWSmQzPWvCaZLHIRv0rXVTm-3GCk2eY'
 }
 
-const Berna = {
-    access_token: 'gluU4ok_ruydxWSmQzPWvCaZLHIRv0rXVTm-3GCk2eY',
-    subscriber_number: '9178837455'
+function send_message(message, number) {
+    var url = 'https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/5133/requests?access_token=' + access_tokens[number];
+    request.post(
+        url,
+        { form: { address: number, message: message} },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body)
+            }
+        }
+    );
 }
 
 // parse application/x-www-form-urlencoded
@@ -96,10 +105,13 @@ app.post('/', (req, res) => {
             verified: false
         })
 
-        worker.save().then(() => res.send({
-            "msg": "Employer successfully registered.",
-            "success": true
-        })).catch(() => res.send({
+        worker.save().then(() => {
+            send_message('Testing', worker.contactNumber);
+            res.send({
+                "msg": "Employer successfully registered.",
+                "success": true
+            });
+        }).catch(() => res.send({
             "msg": "That number is already registered.",
             "success": false
         }))
