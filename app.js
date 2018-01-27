@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
         })
 
         worker.save().then(() => res.send({
-            "msg": "Employer successfully registered.",
+            "msg": "Worker successfully registered.",
             "success": true
         })).catch(() => res.send({
             "msg": "That number is already registered.",
