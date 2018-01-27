@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const app = express()
+const PORT = process.env.PORT || 5000
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,4 +16,4 @@ app.post('/', (req, res) => {
     res.send(req.body)
 })
 
-app.listen(3001, () => console.log('Example app listening on port 3001!'))
+app.listen(PORT, () => console.log('Example app listening on port 3001!'))
