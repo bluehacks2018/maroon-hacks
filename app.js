@@ -69,8 +69,64 @@ app.post('/signup', function(req, res) {
 });
 
 app.post('/', (req, res) => {
-    console.log(req.body.inboundSMSMessageList.inboundSMSMessage)
-    res.send(req.body)
+    msg = req.body.inboundSMSMessageList.inboundSMSMessage[0].message
+    number = req.body.inboundSMSMessageList.inboundSMSMessage[0].senderAddress
+    msg = msg.split(" ")
+    console.log(msg)
+
+    if (msg[0] === "REG1") {
+        const worker = new Worker({
+            firstName: msg[1],
+            middleInitial: msg[2],
+            lastName: msg[3],
+            contactNumber: '0' + number.substring(number.length - 10),
+            pin: msg[4],
+            streetAddress: '',
+            job: msg[5],
+            verified: false
+        })
+
+        worker.save().then(() => res.send({
+            "msg": "Employer successfully registered.",
+            "success": true
+        })).catch(() => res.send({
+            "msg": "That number is already registered.",
+            "success": false
+        }))
+    } else if (msg[0] === "REG2") {
+        const employer = new Employer({
+            firstName: msg[1],
+            middleInitial: msg[2],
+            lastName: msg[3],
+            contactNumber: '0' + number.substring(number.length - 10),
+            pin: msg[4],
+            verified: false
+        })
+
+        employer.save().then(() => res.send({
+            "msg": "Employer successfully registered.",
+            "success": true
+        })).catch(() => res.send({
+            "msg": "That number is already registered.",
+            "success": false
+        }))
+    } else if (msg[0] === "FIND") {
+        res.send({
+            msg: 'FIND',
+            success: true
+        })
+    } else if (msg[0] === "REVIEW") {
+        res.send({
+            msg: 'REVIEW',
+            success: true
+        })
+    } else {
+        res.send({
+            msg: 'Format is not valid.',
+            success: false
+        })
+    }
+
 })
 
 app.post('/employers', (req, res) => {
