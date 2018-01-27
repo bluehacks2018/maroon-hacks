@@ -13,7 +13,7 @@ const Employer = mongoose.model('Employer', {
     lastName: String,
     contactNumber: String,
     email: String,
-    password: String,
+    pin: String,
     streetAddress: String,
     city: String,
     region: String,
@@ -26,10 +26,11 @@ const Worker = mongoose.model('Worker', {
     lastName: String,
     contactNumber: String,
     email: String,
-    password: String,
+    pin: String,
     streetAddress: String,
     city: String,
     region: String,
+    job: String,
     verified: Boolean
 })
 
@@ -52,7 +53,7 @@ app.post('/employers', (req, res) => {
         lastName: req.body.lastName,
         contactNumber: req.body.contactNumber,
         email: req.body.email,
-        password: req.body.password,
+        pin: req.body.pin,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
         region: req.body.region,
@@ -72,10 +73,11 @@ app.post('/workers', (req, res) => {
         lastName: req.body.lastName,
         contactNumber: req.body.contactNumber,
         email: req.body.email,
-        password: req.body.password,
+        pin: req.body.pin,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
         region: req.body.region,
+        job: req.body.job,
         verified: false
     })
 
