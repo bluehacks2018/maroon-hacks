@@ -29,6 +29,7 @@ body {
 }
 
 a.card {
+    text-align: center !important;
     color: #333;
     border: none !important;
     box-shadow: none !important;

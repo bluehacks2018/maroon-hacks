@@ -19,26 +19,49 @@
                           </div>
                       </h1>
                       <div class="ui huge segment">
-                        <h2 class="ui header">Pagkakapatunay 
+                        <h2 class="ui header">Pagkakapatunay
                             <div class="sub header">
                                 (Verification)
                             </div>
                         </h2>
+                        <label>Kumuha ng litrato habang hawak ang isang balidong ID. <br>(Please upload a photo of you holding up a valid ID.)</label>
+                        <div class="ui basic segment center aligned">
+                            <video id="video" width="320" height="240" autoplay></video>
+                            <canvas id="canvas" class='hide' width="320" height="240"></canvas><br>
+                            <button class='ui primary button' id="snap" style='margin-top: 10px;'>Kumuha ng litrato <br> <span style='font-size: 12px;'>(Take a picture)</span></button>
+                        </div>
                         <form class="ui form">
-                            <label>Kumuha ng litrato habang hawak ang isang balidong ID. <br>(Please upload a photo of you holding up a valid ID.)</label>
-                            <div class="ui basic segment center aligned">
-                                <video id="video" width="320" height="240" autoplay></video>
-                                <canvas id="canvas" class='hide' width="320" height="240"></canvas><br>
-                                <button class='ui primary button' id="snap" style='margin-top: 10px;'>Kumuha ng litrato <br> <span style='font-size: 12px;'>(Take a picture)</span></button>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="icon marker"></i>
+                                    <input type="text" name="street_address" placeholder="Street Address">
+                                </div>
                             </div>
                             <div class="field">
-                                <input type="text" name="street_address" placeholder="Street Address">
-                            </div>
-                            <div class="field">
-                                <input type="text" name="city" placeholder="City">
-                            </div>
-                            <div class="field">
-                                <input type="text" name="region" placeholder="Region">
+                                    <div class="ui floating dropdown labeled search fluid icon button">
+                                            <i class="building icon"></i>
+                                            <span class="text">City</span>
+                                            <div class="menu">
+                                                <div class='item'> Caloocan, "NCR,  3rd district"</div>
+                                                <div class='item'> Las Pinas, "NCR,  4th district"</div>
+                                                <div class='item'> Makati, "NCR,  4th district"</div>
+                                                <div class='item'> Malabon, "NCR,  3rd district"</div>
+                                                <div class='item'> Mandaluyong, "NCR,  2nd district"</div>
+                                                <div class='item'> Manila, "NCR,  City of Manila,  1st district"</div>
+                                                <div class='item'> Marikina, "NCR,  2nd district"</div>
+                                                <div class='item'> Muntinlupa, "NCR,  4th district"</div>
+                                                <div class='item'> Navotas, "NCR,  3rd district"</div>
+                                                <div class='item'> Paranaque, "NCR,  4th district"</div>
+                                                <div class='item'> Pasay, "NCR,  4th district"</div>
+                                                <div class='item'> Pasig, "NCR,  2nd district"</div>
+                                                <div class='item'> Pateros, "NCR,  4th district"</div>
+                                                <div class='item'> Quezon City, "NCR,  2nd district"</div>
+                                                <div class='item'> San Juan, "NCR,  2nd district"</div>
+                                                <div class='item'> Taguig, "NCR,  4th district"</div>
+                                                <div class='item'> Valenzuela, "NCR,  3rd district"</div>
+                                            </div>
+                                          </div>
+
                             </div>
                             <input type="submit" value="Confirm (Pagtibayin)" class='ui primary button'>
                         </form>
@@ -48,6 +71,7 @@
                 </div>
               </div>
 <script src="/js/jquery.min.js"></script>
+<script src="/js/semantic.min.js"></script>
 <script>
     // Grab elements, create settings, etc.
 var video = document.getElementById('video');
@@ -72,7 +96,48 @@ document.getElementById("snap").addEventListener("click", function() {
     $('#video').addClass('hide');
     $('#canvas').removeClass('hide');
 });
+$('.ui.dropdown').dropdown();
+$('.ui.search')
+  .search({
+    source: content
+  })
+;
+
+var content = [
+    {title: 'Caloocan, "NCR,  3rd district"'},
+
+    {title: 'Las Pinas, "NCR,  4th district"'},
+
+    {title: 'Makati, "NCR,  4th district"'},
+
+    {title: 'Malabon, "NCR,  3rd district"'},
+
+    {title: 'Mandaluyong, "NCR,  2nd district"'},
+
+    {title: 'Manila, "NCR,  City of Manila,  1st district"'},
+
+    {title: 'Marikina, "NCR,  2nd district"'},
+
+    {title: 'Muntinlupa, "NCR,  4th district"'},
+
+    {title: 'Navotas, "NCR,  3rd district"'},
+
+    {title: 'Paranaque, "NCR,  4th district"'},
+
+    {title: 'Pasay, "NCR,  4th district"'},
+
+    {title: 'Pasig, "NCR,  2nd district"'},
+
+    {title: 'Pateros, "NCR,  4th district"'},
+
+    {title: 'Quezon City, "NCR,  2nd district"'},
+
+    {title: 'San Juan, "NCR,  2nd district"'},
+
+    {title: 'Taguig, "NCR,  4th district"'},
+
+    {title: 'Valenzuela, "NCR,  3rd district"'},
+]
 </script>
 </body>
 </html>
-
