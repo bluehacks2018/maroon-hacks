@@ -83,7 +83,6 @@ app.post('/employers', (req, res) => {
         pin: req.body.pin,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
-        region: req.body.region,
         verified: false
     })
 
@@ -106,7 +105,6 @@ app.post('/workers', (req, res) => {
         pin: req.body.pin,
         streetAddress: req.body.streetAddress,
         city: req.body.city,
-        region: req.body.region,
         job: req.body.job,
         verified: false
     })
@@ -135,7 +133,6 @@ app.patch('/employers', (req, res) => {
         employer.pin = req.body.pin || employer.pin,
         employer.streetAddress = req.body.streetAddress || employer.streetAddress,
         employer.city = req.body.city || employer.city,
-        employer.region = req.body.region || employer.region,
         employer.verified = true
 
         employer.save()
@@ -160,7 +157,6 @@ app.patch('/workers', (req, res) => {
         worker.pin = req.body.pin || worker.pin,
         worker.streetAddress = req.body.streetAddress || worker.streetAddress,
         worker.city = req.body.city || worker.city,
-        worker.region = req.body.region || worker.region,
         worker.job = req.body.job || worker.job,
         worker.verified = true
 
