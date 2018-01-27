@@ -11,7 +11,7 @@ const Employer = mongoose.model('Employer', {
     firstName: String,
     middleInitial: String,
     lastName: String,
-    contactNumber: String,
+    contactNumber: { type: String, unique: true },
     email: String,
     pin: String,
     streetAddress: String,
@@ -24,7 +24,7 @@ const Worker = mongoose.model('Worker', {
     firstName: String,
     middleInitial: String,
     lastName: String,
-    contactNumber: String,
+    contactNumber: { type: String, unique: true },
     email: String,
     pin: String,
     streetAddress: String,
@@ -62,7 +62,10 @@ app.post('/employers', (req, res) => {
 
     employer.save().then(() => res.send({
         "msg": "Employer successfully registered.",
-        "data": employer
+        "success": true
+    })).catch(() => res.send({
+        "msg": "That number is already registered.",
+        "success": false
     }))
 })
 
@@ -83,7 +86,10 @@ app.post('/workers', (req, res) => {
 
     worker.save().then(() => res.send({
         "msg": "Worker successfully registered.",
-        "data": worker
+        "success": true
+    })).catch(() => res.send({
+        "msg": "That number is already registered.",
+        "success": false
     }))
 })
 
