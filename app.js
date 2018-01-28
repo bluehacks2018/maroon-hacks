@@ -105,6 +105,17 @@ app.get('/karpintero', (req, res) => {
     })
 })
 
+app.get('/:job', (req, res) => {
+    Worker.find({ 'job': req.params.job }).then((workers) => {
+        res.send({ 'workers': workers, 'success': true });
+    }).catch((err) => {
+        res.send({
+            'err': err,
+            'success': false
+        })
+    })
+})
+
 app.post('/', (req, res) => {
     msg = req.body.inboundSMSMessageList.inboundSMSMessage[0].message
     number = req.body.inboundSMSMessageList.inboundSMSMessage[0].senderAddress
@@ -281,7 +292,7 @@ app.patch('/verify', (req, res) => {
             worker.city = req.body.city || worker.city,
             worker.job = req.body.job || worker.job,
             worker.verified = true
-    
+
             worker.save()
         }).then(() => res.send({
             "msg": "Worker info successfully updated.",
@@ -303,7 +314,7 @@ app.patch('/verify', (req, res) => {
             employer.streetAddress = req.body.streetAddress || employer.streetAddress,
             employer.city = req.body.city || employer.city,
             employer.verified = true
-    
+
             employer.save()
         }).then(() => res.send({
             "msg": "Employer info successfully updated.",
