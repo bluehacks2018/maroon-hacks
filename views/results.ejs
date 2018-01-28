@@ -12,12 +12,13 @@
     <h1 class="kwelyo title centered ui header" style='margin-top: 50px;'>KWELYO</h1>
     <div class="ui segment container">
         <h2 class="ui header">Mga Karpintero (Carpenters)</h2>
-        <table class="ui three column celled table stackable">
+        <table class="ui four column celled table stackable">
             <thead>
                 <tr>
                     <th>Pangalan</th>
                     <th>Lokasyon</th>
                     <th>Contact Number</th>
+                    <th>Huling Review</th>
                 </tr>
             </thead>
                 <% for(let i=0; i<carpenters.length; i++) { %>
@@ -27,6 +28,13 @@
                     <td>
                         <div class="ui primary button hidden_number"><%= carpenters[i].contactNumber.substring(0, 4)%>XXXXXXX</div>
                         <div class="ui primary button real_number"><%= carpenters[i].contactNumber %></div>
+                    </td>
+                    <td>
+                        <% if (carpenters[i].comments.length != 0 ) { %>
+                            <%= carpenters[i].comments[0] %>
+                        <% } else { %>
+                            Wala pang reviews.
+                        <% } %>
                     </td>
                 </tr>
                 <% } %>
