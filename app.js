@@ -84,6 +84,12 @@ app.get('/verify', function(req, res) {
     res.render('verify');
 });
 
+app.post('/verify', function(req, res) {
+    message_to_send = 'Ang iyong account ay naverify na. ';
+    send_message(message_to_send, req.body.contactNumber);
+    res.redirect('/');
+})
+
 app.post('/signup', function(req, res) {
     res.send(req.body);
 });
