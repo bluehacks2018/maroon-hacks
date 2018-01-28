@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kwelyo</title>
+  <link rel="stylesheet" href="/css/semantic.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1 class="kwelyo title centered ui header" style='margin-top: 50px;'>KWELYO</h1>
+    <div class="ui segment container">
+        <h2 class="ui header">Mga Karpintero (Carpenters)</h2>
+        <table class="ui four column celled table stackable">
+            <thead>
+                <tr>
+                    <th>Pangalan</th>
+                    <th>Lokasyon</th>
+                    <th>Contact Number</th>
+                    <th>Huling Review</th>
+                </tr>
+            </thead>
+                <% for(let i=0; i<carpenters.length; i++) { %>
+                <tr>
+                    <td><%= carpenters[i].firstName %> <%= carpenters[i].lastName %></td>
+                    <td><%= carpenters[i].city %></td>
+                    <td>
+                        <div class="ui primary button hidden_number"><%= carpenters[i].contactNumber.substring(0, 4)%>XXXXXXX</div>
+                        <div class="ui primary button real_number"><%= carpenters[i].contactNumber %></div>
+                    </td>
+                    <td>
+                        <% if (carpenters[i].comments.length != 0 ) { %>
+                            <%= carpenters[i].comments[carpenters[i].comments.length - 1] %>
+                        <% } else { %>
+                            Wala pang reviews.
+                        <% } %>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    
+    <script>
+        $('.hidden_number').click(function(){
+            console.log($(this).closest('.real_number'));
+            $(this).next().removeClass('real_number');
+            $(this).addClass('hide');
+        })
+    </script>
+</body>
+</html>
+

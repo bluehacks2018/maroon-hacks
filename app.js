@@ -42,7 +42,7 @@ const Worker = mongoose.model('Worker', {
     email: { type: String, default: ''},
     pin: { type: String, default: ''},
     streetAddress: { type: String, default: ''},
-    city: { type: String, default: ''},
+    city: { type: String, default: 'Quezon City, "NCR,  2nd district"'},
     job: { type: String, default: ''},
     comments: [{ type: String }],
     verified: { type: Boolean, default: false}
@@ -96,7 +96,7 @@ app.post('/signup', function(req, res) {
 
 app.get('/karpintero', (req, res) => {
     Worker.find({ 'job': 'Karpintero' }).then((carpenters) => {
-        res.send({ 'carpenters': carpenters, 'success': true });
+        res.render('results', { 'carpenters': carpenters, 'success': true });
     }).catch((err) => {
         res.send({
             'err': err,
@@ -168,6 +168,7 @@ app.post('/', (req, res) => {
             "success": false
         }))
     } else if (msg[0] === "FIND") {
+        console.log(req.body.inboundSMSMessageList);
         Worker.find({ 'job': msg[1] }).then((workers) => {
             message_to_send = ''
 
