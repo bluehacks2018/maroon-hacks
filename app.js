@@ -44,6 +44,7 @@ const Worker = mongoose.model('Worker', {
     streetAddress: { type: String, default: ''},
     city: { type: String, default: ''},
     job: { type: String, default: ''},
+    comments: [{ type: String }],
     verified: { type: Boolean, default: false}
 })
 
@@ -161,6 +162,29 @@ app.post('/', (req, res) => {
             })
         })
     } else if (msg[0] === "REVIEW") {
+        comment = ''
+
+        for (var i = 2; i < msg.length; i++) {
+            comment = comment + msg[i] + ' '
+        }
+
+        Worker.findOne({ 'contactNumber': msg[1] }).then((worker) => {
+            worker.comments.push(comment)
+            worker.save()
+        }).then((worker) => {
+            message_to_send = 'Salamat sa pagbibigay ng review!';
+            send_message(message_to_send, '0' + number.substring(number.length - 10));
+        }).then(() => {
+            res.send({
+                msg: "Your review has been added.",
+                success: true
+            })
+        }).catch((err) => {
+            res.send({
+                msg: 'There was an error in reviewing ' + msg[1] + ', please try again.',
+                success: false
+            })
+        })
         res.send({
             msg: 'REVIEW',
             success: true
