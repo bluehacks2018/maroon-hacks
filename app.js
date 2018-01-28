@@ -94,6 +94,10 @@ app.post('/signup', function(req, res) {
     res.send(req.body);
 });
 
+app.get('/carpenters', function(req, res) {
+    res.render('results');
+})
+
 app.post('/', (req, res) => {
     msg = req.body.inboundSMSMessageList.inboundSMSMessage[0].message
     number = req.body.inboundSMSMessageList.inboundSMSMessage[0].senderAddress
