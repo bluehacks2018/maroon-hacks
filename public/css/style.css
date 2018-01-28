@@ -1,5 +1,5 @@
 .fullpage {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .primary.button {
@@ -15,6 +15,7 @@
 }
 
 .kwelyo.title {
+    margin-top: 50px;
     color: #ffffff;
     font-size: 40px !important;
     letter-spacing: 2px;
