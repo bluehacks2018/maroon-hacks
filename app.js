@@ -128,7 +128,11 @@ app.post('/', (req, res) => {
         })
 
         employer.save().then(() => {
+<<<<<<< HEAD
             message_to_send = 'Natanggap na namin ang iyong mga detalye, ' + employer.firstName +'. Pumunta sa pinakamalapit na booth upang magpa-verify. Magdala ng balidong ID para dito. Salamat!';
+=======
+            message_to_send = 'Natanggap na namin ang iyong mga detalye, ' + firstName +'. Pumunta sa pinakamalapit na booth upang magpa-verify. Magdala ng balidong ID para dito. Salamat!';
+>>>>>>> 838d95629f19c0ffcabdb2af24eb275c0428050e
             send_message(message_to_send, employer.contactNumber);
             res.send({
                 "msg": "Employer successfully registered.",
