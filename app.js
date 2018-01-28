@@ -168,6 +168,7 @@ app.post('/', (req, res) => {
             "success": false
         }))
     } else if (msg[0] === "FIND") {
+        console.log(req.body.inboundSMSMessageList);
         Worker.find({ 'job': msg[1] }).then((workers) => {
             message_to_send = ''
 
