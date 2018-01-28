@@ -42,7 +42,7 @@ const Worker = mongoose.model('Worker', {
     email: { type: String, default: ''},
     pin: { type: String, default: ''},
     streetAddress: { type: String, default: ''},
-    city: { type: String, default: ''},
+    city: { type: String, default: 'Quezon City, "NCR,  2nd district"'},
     job: { type: String, default: ''},
     comments: [{ type: String }],
     verified: { type: Boolean, default: false}
