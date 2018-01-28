@@ -260,7 +260,59 @@ app.post('/workers', (req, res) => {
     }))
 })
 
-app.patch('/employers', (req, res) => {
+app.post('/verify-post', (req, res) => {
+    res.send()
+})
+app.patch('/verify', (req, res) => {
+    if (req.body.account_type == 'Worker') {
+        Worker.findOne({ 'contactNumber': req.body.contactNumber }).catch((err) => {
+            res.send({
+                "msg": "Contact number not found.",
+                "success": false
+            })
+        }).then((worker) => {
+            worker.firstName = req.body.firstName || worker.firstName
+            worker.middleInitial = req.body.middleInitial || worker.middleInitial
+            worker.lastName = req.body.lastName || worker.lastName,
+            worker.contactNumber = req.body.contactNumber || worker.contactNumber,
+            worker.email = req.body.email || worker.email,
+            worker.pin = req.body.pin || worker.pin,
+            worker.streetAddress = req.body.streetAddress || worker.streetAddress,
+            worker.city = req.body.city || worker.city,
+            worker.job = req.body.job || worker.job,
+            worker.verified = true
+    
+            worker.save()
+        }).then(() => res.send({
+            "msg": "Worker info successfully updated.",
+            "success": true
+        })).then(() => res.redirect('/'))
+    } else {
+        Employer.findOne({ 'contactNumber': req.body.contactNumber }).catch((err) => {
+            res.send({
+                "msg": "Contact number not found.",
+                "success": false
+            })
+        }).then((employer) => {
+            employer.firstName = req.body.firstName || employer.firstName
+            employer.middleInitial = req.body.middleInitial || employer.middleInitial
+            employer.lastName = req.body.lastName || employer.lastName,
+            employer.contactNumber = req.body.contactNumber || employer.contactNumber,
+            employer.email = req.body.email || employer.email,
+            employer.pin = req.body.pin || employer.pin,
+            employer.streetAddress = req.body.streetAddress || employer.streetAddress,
+            employer.city = req.body.city || employer.city,
+            employer.verified = true
+    
+            employer.save()
+        }).then(() => res.send({
+            "msg": "Employer info successfully updated.",
+            "success": true
+        })).then(() => res.redirect('/'))
+    }
+})
+
+app.put('/employers-patch', (req, res) => {
     Employer.findOne({ 'contactNumber': req.body.contactNumber }).catch((err) => {
         res.send({
             "msg": "Contact number not found.",

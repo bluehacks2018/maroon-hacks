@@ -30,40 +30,65 @@
                             <canvas id="canvas" class='hide' width="320" height="240"></canvas><br>
                             <button class='ui primary button' id="snap" style='margin-top: 10px;'>Kumuha ng litrato <br> <span style='font-size: 12px;'>(Take a picture)</span></button>
                         </div>
-                        <form class="ui form">
+                        <form class="ui form" action='/verify' method='post'>
                             <div class="field">
                                 <div class="ui left icon input">
-                                    <i class="icon marker"></i>
-                                    <input type="text" name="street_address" placeholder="Street Address">
+                                    <i class="icon phone"></i>
+                                    <input type="text" name="contactNumber" placeholder="09XX XXX XXXX">
                                 </div>
                             </div>
                             <div class="field">
-                                    <div class="ui floating dropdown labeled search fluid icon button">
-                                            <i class="building icon"></i>
-                                            <span class="text">City</span>
-                                            <div class="menu">
-                                                <div class='item'> Caloocan, "NCR,  3rd district"</div>
-                                                <div class='item'> Las Pinas, "NCR,  4th district"</div>
-                                                <div class='item'> Makati, "NCR,  4th district"</div>
-                                                <div class='item'> Malabon, "NCR,  3rd district"</div>
-                                                <div class='item'> Mandaluyong, "NCR,  2nd district"</div>
-                                                <div class='item'> Manila, "NCR,  City of Manila,  1st district"</div>
-                                                <div class='item'> Marikina, "NCR,  2nd district"</div>
-                                                <div class='item'> Muntinlupa, "NCR,  4th district"</div>
-                                                <div class='item'> Navotas, "NCR,  3rd district"</div>
-                                                <div class='item'> Paranaque, "NCR,  4th district"</div>
-                                                <div class='item'> Pasay, "NCR,  4th district"</div>
-                                                <div class='item'> Pasig, "NCR,  2nd district"</div>
-                                                <div class='item'> Pateros, "NCR,  4th district"</div>
-                                                <div class='item'> Quezon City, "NCR,  2nd district"</div>
-                                                <div class='item'> San Juan, "NCR,  2nd district"</div>
-                                                <div class='item'> Taguig, "NCR,  4th district"</div>
-                                                <div class='item'> Valenzuela, "NCR,  3rd district"</div>
-                                            </div>
-                                          </div>
+                                <div class="ui left icon input">
+                                    <i class="icon lock"></i>
+                                    <input type="password" name="pin" placeholder="XXXX">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="icon marker"></i>
+                                    <input type="text" name="streetAddress" placeholder="Street Address">
+                                </div>
+                            </div>
+                            <div class="field">
+                                    <select name="city" class="ui dropdown">
+                                        <option value="">Select City</option>
+                                        <option value='Caloocan, "NCR,  3rd district"'> Caloocan, "NCR,  3rd district"</option>
+                                        <option value='Las Pinas, "NCR,  4th district"'> Las Pinas, "NCR,  4th district"</option>
+                                        <option value='Makati, "NCR,  4th district"'> Makati, "NCR,  4th district"</option>
+                                        <option value='Malabon, "NCR,  3rd district"'> Malabon, "NCR,  3rd district"</option>
+                                        <option value='Mandaluyong, "NCR,  2nd district"'> Mandaluyong, "NCR,  2nd district"</option>
+                                        <option value='Manila, "NCR,  City of Manila,  1st district"'> Manila, "NCR,  City of Manila,  1st district"</option>
+                                        <option value='Marikina, "NCR,  2nd district"'> Marikina, "NCR,  2nd district"</option>
+                                        <option value='Muntinlupa, "NCR,  4th district"'> Muntinlupa, "NCR,  4th district"</option>
+                                        <option value='Navotas, "NCR,  3rd district"'> Navotas, "NCR,  3rd district"</option>
+                                        <option value='Paranaque, "NCR,  4th district"'> Paranaque, "NCR,  4th district"</option>
+                                        <option value='Pasay, "NCR,  4th district"'> Pasay, "NCR,  4th district"</option>
+                                        <option value='Pasig, "NCR,  2nd district"'> Pasig, "NCR,  2nd district"</option>
+                                        <option value='Pateros, "NCR,  4th district"'> Pateros, "NCR,  4th district"</option>
+                                        <option value='Quezon City, "NCR,  2nd district"'> Quezon City, "NCR,  2nd district"</option>
+                                        <option value='San Juan, "NCR,  2nd district"'> San Juan, "NCR,  2nd district"</option>
+                                        <option value='Taguig, "NCR,  4th district"'> Taguig, "NCR,  4th district"</option>
+                                        <option value='Valenzuela, "NCR,  3rd district"'> Valenzuela, "NCR,  3rd district"</option>
+                                    </select>
 
                             </div>
-                            <input type="submit" value="Confirm (Pagtibayin)" class='ui primary button'>
+
+                            <div class="inline fields">
+                                <label for="type">Piliin ang uri ng account:</label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                    <input type="radio" name="account_type" checked="" tabindex="0" class="hidden">
+                                    <label>Worker</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                    <input type="radio" name="account_type" tabindex="0" class="hidden">
+                                    <label>Employer</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Pagtibayin (Confirm)" class='ui primary button'>
                         </form>
                     </div>
                   </div>
@@ -97,47 +122,9 @@ document.getElementById("snap").addEventListener("click", function() {
     $('#canvas').removeClass('hide');
 });
 $('.ui.dropdown').dropdown();
-$('.ui.search')
-  .search({
-    source: content
-  })
+$('.ui.radio.checkbox')
+  .checkbox()
 ;
-
-var content = [
-    {title: 'Caloocan, "NCR,  3rd district"'},
-
-    {title: 'Las Pinas, "NCR,  4th district"'},
-
-    {title: 'Makati, "NCR,  4th district"'},
-
-    {title: 'Malabon, "NCR,  3rd district"'},
-
-    {title: 'Mandaluyong, "NCR,  2nd district"'},
-
-    {title: 'Manila, "NCR,  City of Manila,  1st district"'},
-
-    {title: 'Marikina, "NCR,  2nd district"'},
-
-    {title: 'Muntinlupa, "NCR,  4th district"'},
-
-    {title: 'Navotas, "NCR,  3rd district"'},
-
-    {title: 'Paranaque, "NCR,  4th district"'},
-
-    {title: 'Pasay, "NCR,  4th district"'},
-
-    {title: 'Pasig, "NCR,  2nd district"'},
-
-    {title: 'Pateros, "NCR,  4th district"'},
-
-    {title: 'Quezon City, "NCR,  2nd district"'},
-
-    {title: 'San Juan, "NCR,  2nd district"'},
-
-    {title: 'Taguig, "NCR,  4th district"'},
-
-    {title: 'Valenzuela, "NCR,  3rd district"'},
-]
 </script>
 </body>
 </html>
