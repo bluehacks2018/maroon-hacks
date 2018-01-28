@@ -20,16 +20,27 @@
                     <th>Contact Number</th>
                 </tr>
             </thead>
+                <% for(let i=0; i<carpenters.length; i++) { %>
                 <tr>
-                    <td>Juan</td>
-                    <td>Quezon</td>
+                    <td><%= carpenters[i].firstName %> <%= carpenters[i].lastName %></td>
+                    <td><%= carpenters[i].city %></td>
                     <td>
-                        <div class="ui primary button hidden_number">0906 XXX XXXX</div>
-                        <div class="ui primary button real_number">0906 461 2583</div>
+                        <div class="ui primary button hidden_number"><%= carpenters[i].contactNumber.substring(0, 4)%>XXXXXXX</div>
+                        <div class="ui primary button real_number"><%= carpenters[i].contactNumber %></div>
                     </td>
                 </tr>
+                <% } %>
         </table>
     </div>
+    <script src="/js/jquery.min.js"></script>
+    
+    <script>
+        $('.hidden_number').click(function(){
+            console.log($(this).closest('.real_number'));
+            $(this).next().removeClass('real_number');
+            $(this).addClass('hide');
+        })
+    </script>
 </body>
 </html>
 

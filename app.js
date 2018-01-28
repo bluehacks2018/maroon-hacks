@@ -94,8 +94,15 @@ app.post('/signup', function(req, res) {
     res.send(req.body);
 });
 
-app.get('/carpenters', function(req, res) {
-    res.render('results');
+app.get('/karpintero', (req, res) => {
+    Worker.find({ 'job': 'Karpintero' }).then((carpenters) => {
+        res.render('results', { 'carpenters': carpenters, 'success': true });
+    }).catch((err) => {
+        res.send({
+            'err': err,
+            'success': false
+        })
+    })
 })
 
 app.post('/', (req, res) => {
