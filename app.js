@@ -35,16 +35,16 @@ const Employer = mongoose.model('Employer', {
 //     Tubero
 
 const Worker = mongoose.model('Worker', {
-    firstName: String,
-    middleInitial: String,
-    lastName: String,
+    firstName: { type: String, default: ''},
+    middleInitial: { type: String, default: ''},
+    lastName: { type: String, default: ''},
     contactNumber: { type: String, unique: true },
-    email: String,
-    pin: String,
-    streetAddress: String,
-    city: String,
-    job: String,
-    verified: Boolean
+    email: { type: String, default: ''},
+    pin: { type: String, default: ''},
+    streetAddress: { type: String, default: ''},
+    city: { type: String, default: ''},
+    job: { type: String, default: ''},
+    verified: { type: Boolean, default: false}
 })
 
 const access_tokens = {
