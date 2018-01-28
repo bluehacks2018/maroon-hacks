@@ -139,9 +139,26 @@ app.post('/', (req, res) => {
             "success": false
         }))
     } else if (msg[0] === "FIND") {
-        res.send({
-            msg: 'FIND',
-            success: true
+        Worker.find({ 'job': msg[1] }).then((workers) => {
+            message_to_send = ''
+
+            for (var i = 0; i < workers.length; i++) {
+                if (i === 3) {
+                    break
+                }
+                message_to_send = message_to_send +  workers[i].firstName + ' ' + workers[i].middleInitial + ' ' + workers[i].lastName + ' ' + workers[i].contactNumber + ' ' + workers[i].city + '\n'
+            }
+
+            send_message(message_to_send, '0' + number.substring(number.length - 10));
+            res.send({
+                data: workers,
+                success: true
+            })
+        }).catch((err) => {
+            res.send({
+                msg: 'There was an error in finding a ' + msg[1] + ', please try again.',
+                success: false
+            })
         })
     } else if (msg[0] === "REVIEW") {
         res.send({
