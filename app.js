@@ -12,15 +12,15 @@ app.use(express.static('public'))
 mongoose.connect('mongodb://user:password@ds117148.mlab.com:17148/bluehacks')
 
 const Employer = mongoose.model('Employer', {
-    firstName: String,
-    middleInitial: String,
-    lastName: String,
+    firstName: { type: String, default: '' },
+    middleInitial: { type: String, default: '' },
+    lastName: { type: String, default: '' },
     contactNumber: { type: String, unique: true },
-    email: String,
-    pin: String,
-    streetAddress: String,
-    city: String,
-    verified: Boolean
+    email: { type: String, default: '' },
+    pin: { type: String, default: '' },
+    streetAddress: { type: String, default: '' },
+    city: { type: String, default: '' },
+    verified: { type: Boolean, default: false }
 })
 
 // Jobs:
