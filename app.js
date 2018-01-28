@@ -94,6 +94,17 @@ app.post('/signup', function(req, res) {
     res.send(req.body);
 });
 
+app.get('/karpintero', (req, res) => {
+    Worker.find({ 'job': 'Karpintero' }).then((carpenters) => {
+        res.send({ 'carpenters': carpenters, 'success': true });
+    }).catch((err) => {
+        res.send({
+            'err': err,
+            'success': false
+        })
+    })
+})
+
 app.post('/', (req, res) => {
     msg = req.body.inboundSMSMessageList.inboundSMSMessage[0].message
     number = req.body.inboundSMSMessageList.inboundSMSMessage[0].senderAddress
